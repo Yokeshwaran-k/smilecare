@@ -61,6 +61,9 @@ export default function RootLayout({
 }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en" className={`${fraunces.variable} ${inter.variable}`}>
+      <head>
+        <link rel="icon" href="/images/favicon-smilecare.png" sizes="any" />
+      </head>
       <body className="font-body">
         {children}
         <ScrollToTop />
