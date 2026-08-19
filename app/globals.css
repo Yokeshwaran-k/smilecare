@@ -1,0 +1,87 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  @apply bg-ivory text-charcoal antialiased;
+}
+
+::selection {
+  @apply bg-teal/30 text-navy;
+}
+
+/* Focus visibility for accessibility */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible {
+  outline: 2px solid #3FC5B7;
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+/* Signature motif: the "smile arc" — a soft downward curve echoing a smile,
+   used as a recurring divider/accent across the page so the brand has one
+   consistent, memorable visual signature instead of scattered decoration. */
+.smile-arc {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.section-divider {
+  position: relative;
+  overflow: hidden;
+  line-height: 0;
+}
+
+/* Reveal-on-scroll utility, toggled via IntersectionObserver in components */
+.reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+.reveal-delay-1.is-visible { transition-delay: 0.08s; }
+.reveal-delay-2.is-visible { transition-delay: 0.16s; }
+.reveal-delay-3.is-visible { transition-delay: 0.24s; }
+.reveal-delay-4.is-visible { transition-delay: 0.32s; }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .reveal {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Utility: gradient text for accent headline words */
+.text-gradient-teal {
+  background: linear-gradient(100deg, #1D4C74 0%, #2C6FA8 45%, #3FC5B7 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* Card border used across the site for the "white card, subtle border" language */
+.card-surface {
+  @apply bg-white border border-navy-100/70 shadow-soft;
+}
+
+/* Custom scrollbar for testimonial / carousel strips (optional, progressive) */
+.no-scrollbar::-webkit-scrollbar { display: none; }
+.no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
